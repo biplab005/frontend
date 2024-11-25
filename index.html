@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>Welcome to Angel Heart Public School</title>
+</head>
+
+<body>
+    <style>
+/* Centering the button */
+.center-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Optional: dark background for contrast */
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Neon button styles */
+.neon-button {
+    background:yellow;
+    border: 2px solid #222218; /* Neon yellow border */
+    color: #000000; /* Neon yellow text */
+    font-size: 1.5rem;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-family: 'Arial', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    border-radius: 15px;
+    font-weight: bold;
+    outline: none;
+    transition: 0.2s ease-in-out;
+    
+}
+
+/* Adding the neon glow effect */
+.neon-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #222218;
+    box-shadow: 0 0 5px #fff000, 0 0 10px #fff000, 0 0 20px #fff000, 0 0 40px #fff000;
+    opacity: 0.6;
+    z-index: -1;
+    border-radius: 13px;
+    transition: 0.5s ease-in-out;
+}
+
+/* Animation and hover effect */
+.neon-button:hover::before {
+    opacity: 1;
+    box-shadow: 0 0 10px #fff000, 0 0 20px #fff000, 0 0 30px #fff000, 0 0 60px #fff000;
+}
+
+.neon-button:hover {
+    transform: scale(1.1);
+    color: #000000; /* Slightly dimming text to highlight glow */
+}
+/* Style for the notice board container */
+.notice-board {
+    max-width: 600px;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #df1435; /* Pink background */
+    padding: 20px;
+    color: #ffffff;
+}
+
+/* Style for the notice box */
+/* Style for the notice board container */
+.notice-board {
+    max-width: 600px;
+    margin: 0 auto;
+    border-radius: 30px;
+    background: linear-gradient(10deg, #f700ff, #e2137b); /* Neon gradient background */
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+    color: #b61919; /* White text for contrast */
+
+}
+
+/* Style for the notice container */
+.notice-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* Style for the notice board title */
+.notice-board-title {
+    color: #ffffff; /* White color for the title */
+    text-decoration: underline; /* Underline the title */
+    font-size: 2.5rem; /* Size of the title */
+    font-family: 'Arial', sans-serif;
+    margin-bottom: 20px; /* Space below the title */
+    text-align: center; /* Center the title */
+    font-weight: bold;
+}
+
+/* Style for the notice box */
+.notice-box {
+    width: 100%;
+    height: 400px;
+    border: 2px solid #ffc107; /* Solid gold border for contrast */
+    background-color: rgb(101, 40, 245); /* Vibrant purple background */
+    border-radius: 30px;
+    padding: 15px;
+    box-shadow: 
+        0 0 1px #ff00ff, 
+        0 0 10px #ff00ff, 
+        0 0 20px #ff00ff, 
+        0 0 30px #ff00ff; /* Neon pink glow */
+    overflow-y: auto; /* Scrollbar for overflowing content */
+    font-family: 'Arial', sans-serif;
+    font-size: 2rem;
+    color: #f1f1f1; /* White text for visibility */
+    text-align: center;
+}
+
+/* Placeholder text style */
+#notice-text {
+    color: #fffdfd; /* Light text color for placeholder */
+    font-style: italic;
+    text-shadow: 0 0 10px #ff00ff; /* Neon pink glow for text */
+}
+
+
+/* Navbar Wrapper for Notice */
+.notice-ticker-wrapper {
+    width: 100vw; /* Full viewport width */
+    overflow: hidden; /* Hide overflowing text */
+    background-color: orange; /* Bold blue background */
+    padding: 10px 0; /* Vertical padding for better alignment */
+    border-bottom: 2px solid #ffffff; /* White border for separation */
+    position: relative; /* Ensures proper alignment */
+}
+
+/* Scrolling Notice Ticker */
+.notice-ticker {
+    display: inline-block;
+    white-space: nowrap; /* Prevent text wrapping */
+    animation: scrollFullWidth 20s linear infinite; /* Smooth scrolling animation */
+    font-size: 2rem; /* Default font size for large screens */
+    color: light blue; /* White text for visibility */
+    text-shadow: 0 0 5px #ffffff, 0 0 10px #ff00ff; /* Glowing text effect */
+    font-family: 'Arial', sans-serif; /* Clean and readable font */
+    letter-spacing: 1px; /* Improves readability */
+    position: relative; /* Ensures proper alignment */
+   padding-left: 2rem; /* Adds slight left shift for starting position */
+}
+
+/* Full-width scrolling animation */
+@keyframes scrollFullWidth {
+    0% {
+        transform: translateX(100%); /* Start off-screen to the right */
+    }
+    100% {
+        transform: translateX(-100%); /* End off-screen to the left */
+    }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .notice-ticker {
+        font-size: 1.2rem; /* Reduce font size for tablets */
+    }
+}
+
+@media (max-width: 576px) {
+    .notice-ticker {
+        font-size: 1rem; /* Smaller font size for mobile screens */
+        letter-spacing: 0.5px; /* Adjust letter spacing for readability */
+    }
+}
+/* General Reset */
+
+/* Section Styling */
+.menu-grid {
+    background-color: #f9f9f9; /* Light background for the menu */
+    padding: 40px 0; /* Vertical padding */
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+.menu-grid h2 {
+    font-size: 2.5rem; /* Increased font size for the heading */
+    font-weight: bold;
+    margin-bottom: 30px; /* Space between title and menu items */
+}
+
+.menu-card {
+    background-color: #8908a3; /* Card background */
+    border-radius: 22px; /* Rounded corners for the card */
+    padding: 15px; /* Padding inside the card */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for card */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth animation */
+    text-align: center;
+    font-weight: bold;
+    
+}
+
+.menu-card img {
+    width: 100%; /* Ensure the GIF fills the width of the card */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px; /* Rounded corners for the image */
+}
+
+.menu-card p {
+    margin-top: 15px;
+    font-size: 1.5rem; /* Increased font size */
+    font-weight: 600;
+    color: #333; /* Text color */
+    border-bottom: 1px solid #ccc; /* Bottom border */
+    padding-bottom: 10px; /* Padding at the bottom */
+}
+
+.menu-card:hover {
+    transform: translateY(-10px); /* Lift the card on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Larger shadow on hover */
+}
+
+.menu-card a {
+    text-decoration: none;
+    color: #333; /* Default text color */
+    transition: color 0.3s ease;
+    display: inline-block;
+    padding: 10px 20px; /* Padding for the clickable button */
+    background-color: #ffc107; /* Yellow button color */
+    border-radius: 25px; /* Curved button */
+    font-size: 1.2rem; /* Increased font size for the link */
+    margin-top: 10px;
+    
+}
+
+.menu-card a:hover {
+    color: #fff; /* Text color on hover */
+    background-color: #e0a800; /* Darker yellow on hover */
+}
+
+.menu-card:hover {
+    transform: translateY(-5px); /* Lift the card on hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
+}
+
+/* Responsive Grid Layout */
+@media (max-width: 768px) {
+    .menu-grid .row {
+        flex-direction: column; /* Stack the items vertically on smaller screens */
+        align-items: center; /* Center the cards */
+    }
+
+    .menu-card {
+        width: 90%; /* Ensure cards fit well on smaller screens */
+        margin-bottom: 20px; /* Space between cards */
+    }
+
+    .menu-grid h2 {
+        font-size: 2rem; /* Slightly smaller font size on mobile */
+    }
+
+    .menu-card a {
+        font-size: 1rem; /* Adjust link font size on tablets */
+        padding: 8px 16px; /* Smaller padding for tablets */
+    }
+}
+h2.text-center {
+    text-decoration: underline;
+    background-color: #ecd0d0; /* Light grey background */
+    padding: 10px; /* Adds spacing inside the background */
+    border-radius: 8px; /* Optional: Adds rounded corners */
+}
+
+@media (max-width: 576px) {
+    .menu-grid .row {
+        justify-content: center; /* Center the items for very small screens */
+    }
+
+    .menu-card {
+        width: 100%; /* Full width cards on very small screens */
+    }
+
+    .menu-grid h2 {
+        
+        font-size: 1.5rem; /* Adjust font size for very small screens */
+    }
+
+    .menu-card a {
+        font-size: 0.9rem; /* Smaller font size for mobile */
+        padding: 6px 14px; /* Smaller padding for mobile */
+    }
+}
+
+
+
+/* Container for the scrolling ticker */
+    </style>
+    <!-- Header Section -->
+<header class="header p-3 bg-gradient border-bottom">
+    <div class="container d-flex justify-content-between align-items-center">
+        <!-- School Logo and Name -->
+        <div class="logo-section d-flex align-items-center">
+            <img src="school-logo.png" alt="School Logo" class="school-logo animated-logo">
+            <div>
+                <h1 class="school-name mb-0">Angel Heart Public School</h1>
+                <p class="text-muted mb-0">(Shaping young minds for tomorrow)</p>
+            </div>
+        </div>
+
+        <!-- Contact Information -->
+        
+    </div>
+    <div class="contact-info d-flex justify-content-center align-items-center">
+        <div class="contact-item d-flex align-items-center">
+            <i class="fa-solid fa-envelope" title="Send Email"></i>
+            <a href="mailto:contact@ahpschool.com">contact@ahpschool.com</a>
+        </div>
+        <div class="separator"></div>
+        <div class="contact-item d-flex align-items-center">
+            <i class="fa-solid fa-phone" title="Call Us"></i>
+            <a href="tel:+11234567890">9883405873</a>
+        </div>
+        <!-- <div class="separator"></div> -->
+        <!-- <div class="contact-item d-flex align-items-center">
+            <i class="fa-brands fa-whatsapp" title="Chat on WhatsApp"></i>
+            <a href="https://wa.me/19876543210" target="_blank">+1-987-654-3210</a>
+        </div> -->
+    </div>
+    
+    
+</header>
+<!-- Navbar with Scrolling Notice Ticker -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container1">
+        <div class="notice-ticker-wrapper">
+            <div class="notice-ticker">
+                <span id="dynamic-notice">Welcome to our website! - Next Admission starting soon - Next Fest coming soon...</span>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+    <!-- Carousel Section -->
+    <div class="containerr">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img src="pexels-emily-ranquist-493228-1205651.jpg" alt="Los Angeles" style="width:100%;">
+                </div>
+
+                <div class="item">
+                    <img src="pexels-element5-1370298.jpg" alt="Chicago" style="width:100%;">
+                </div>
+
+                <div class="item">
+                    <img src="pexels-droosmo-2982449.jpg" alt="New york" style="width:100%;">
+                </div>
+                <div class="item">
+                    <img src="pexels-jeshoots-com-147458-714698.jpg" alt="New york" style="width:100%;">
+                </div>
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Updated Menu Section -->
+    <section class="menu-grid py-4 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-4">Menu</h2>
+            <div class="row text-center">
+                <div class="col-6 col-md-3">
+                    <div class="menu-card shadow p-3 rounded">
+                        <a href="attendence.html"><img src="attendence gif.gif" alt="Attendance"></a>
+                        <p class="mb-0"><a href="attendence.html">Attendance</a></p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="menu-card shadow p-3 rounded">
+                        <a href="stydymaterial.html"><img src="stydymaterials.gif" alt="Study Materials"></a>
+                        <p class="mb-0"><a href="stydymaterial.html">Study Materials</a></p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="menu-card shadow p-3 rounded">
+                        <a href="homework.html"><img src="homework.gif" alt="Homework"></a>
+                        <p class="mb-0"><a href="homework.html">Homework</a></p>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="menu-card shadow p-3 rounded">
+                        <a href="tutionfees.html"><img src="fees.gif" alt="Tuition Fees"></a>
+                        <p class="mb-0"><a href="tutionfees.html">Tuition Fees</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+   <!-- Notice Board Section -->
+<!-- Notice Board Section -->
+<section class="notice-board my-4 p-4 border bg-light">
+    <h2 class="notice-board-title text-center">Notice Board</h2>
+    <div class="notice-container text-center mb-3">
+        <div id="notice-box" class="notice-box">
+            <p id="notice-text">No notices uploaded yet.</p>
+        </div>
+    </div>
+</section>
+
+
+    </section>
+    <div class="center-box">
+        <button class="neon-button" onclick="window.location.href='about.html'">
+            <i class="fa-solid fa-address-card"></i> About
+        </button>
+    </div>
+    
+    
+
+    <!-- Footer Section -->
+    <footer class="footer bg-dark text-white text-center py-3">
+        <p>&copy; 2024 Angel Heart Public School | All rights reserved</p>
+        <p>Designed by <a href="https://soumya-xd.github.io/ds/#">RedAlpha Tech Private Limited</a></p>
+    </footer>
+    <script>
+        // Function to update the notice text
+        function updateNotice(newNotice) {
+            const noticeText = document.getElementById("notice-text");
+            noticeText.textContent = newNotice || "No notices uploaded yet.";
+        }
+        
+    </script>
+</body>
+
+</html>
